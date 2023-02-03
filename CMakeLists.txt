@@ -1,19 +1,36 @@
+# STUFF YOU SHOULD FILL OUT:
+
+# This is the directory of the CxxTest repo (If you don't have it, get it here: https://github.com/CxxTest/cxxtest)
+set(CXXTEST_INCLUDE_DIR "C:/cxxtest*")
+
+# Replace TEMPLATE with the project name
+set(PROJECT_NAME TEMPLATE)
+
+# Set source files here
+set(SOURCES main.cpp Tests.h Classes.h Functions.cpp)
+
+# Set files needed for testing here
+set(TESTS Tests.cpp Functions.cpp)
+
+
+
+
+
+# You shouldn't need to touch this, if theres an issue open a PR or issue at https://github.com/SomeAspy/CSC109Template
 cmake_minimum_required(VERSION 3.23)
-project(Template VERSION 0.1.0) # THIS NEEDS TO BE SET TO THE NAME OF YOUR PROJECT
-
-include_directories(C:/Users/aiden/Documents/cxxtest-4.4/)
-set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE C:/Users/aiden/Documents/cxxtest-4.4/bin/cxxtestgen)
-find_package(CxxTest REQUIRED)
-enable_testing()
-
-CXXTEST_ADD_TEST(unittest # name of the test
-    runner.cpp  # THIS IS GENERATED BUT YOU NEED TO ADD IT HERE
-    ${CMAKE_CURRENT_SOURCE_DIR}/Functions.cpp  # add source files
-    ${CMAKE_CURRENT_SOURCE_DIR}/Tests.h  # YOUR TEST DESCRIPTION FILE
-)
-
-add_executable(Template main.cpp Classes.h App.cpp Tests.h) # SET THIS TO THE NAME OF YOUR PROJECT AND ADD ALL SOURCE FILES
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+project(${PROJECT_NAME})
+set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE ${CXXTEST_INCLUDE_DIR}/bin/cxxtestgen)
+find_package(CxxTest)
+if(CXXTEST_FOUND)
+    message(STATUS "Hello CxxTest!")
+    include_directories(${CXXTEST_INCLUDE_DIR})
+    enable_testing()
+    list(APPEND runner.cpp)
+    foreach(ITEM IN LISTS TESTS)
+        CXXTEST_ADD_TEST(${ITEM} ${ITEM})
+    endforeach(ITEM IN TESTS)
+else()
+    message(STATUS "Could not find CxxTest! You sure its there?")
+    message(STATUS "Will run without testing capabilites!")
+endif()
+add_executable(${PROJECT_NAME} ${SOURCES})
