@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.4.0)
+cmake_minimum_required(VERSION 3.23)
 project(Template VERSION 0.1.0) # THIS NEEDS TO BE SET TO THE NAME OF YOUR PROJECT
 
 include_directories(C:/Users/aiden/Documents/cxxtest-4.4/)
