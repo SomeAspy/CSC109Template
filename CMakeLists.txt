@@ -3,9 +3,9 @@ project(TEMPLATE)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(CXXTEST_INCLUDE_DIR c:/cxxtest-4.4)
+set(CXXTEST_INCLUDE_DIR c:/Users/aiden/Documents/cxxtest)
 
-set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE c:/cxxtest-4.4/bin/cxxtestgen)
+set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE c:Users/aiden/Documents/cxxtest/bin/cxxtestgen)
 
 find_package(CxxTest REQUIRED)
 
@@ -21,4 +21,4 @@ if(CXXTEST_FOUND)
 
 endif()
 
-add_executable(TEMPLATE Functions.cpp Tests.h main.cpp Classes.h)
+add_executable(TEMPLATE Functions.cpp Tests.h runner.cpp Classes.h)
