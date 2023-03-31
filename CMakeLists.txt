@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(CXXTEST_INCLUDE_DIR c:/Users/aiden/Documents/cxxtest)
 
-set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE c:Users/aiden/Documents/cxxtest/bin/cxxtestgen)
+set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE c:/Users/aiden/Documents/cxxtest/bin/cxxtestgen)
 
 find_package(CxxTest REQUIRED)
 
